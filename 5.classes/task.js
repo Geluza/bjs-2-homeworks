@@ -94,15 +94,18 @@ class Library {
 
 
   giveBookByName(bookName) {
-    let giveBook = this.books.findIndex((book) => book.name === bookName);
-    if (giveBook === -1) {
+    let giveBook = this.books.find((book) => book.name === bookName);
+    if (giveBook === undefined) {
       return null;
-    } else if (giveBook > -1) {
-      return this.books.splice(giveBook, 1);
+    } else {
+      this.books.splice(giveBook, 1);
+      return giveBook;
+    }
+    }
     }
 
-  }
-}
+
+
 
 
 
