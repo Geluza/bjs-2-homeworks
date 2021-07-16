@@ -39,20 +39,14 @@ class Triangle {
      }
      }
     
-     class ErrorTriangle {
-         getPerimeter() {
-             return ("Ошибка! Треугольник не существует");
-         }
+    function getPerimeter () {return "Ошибка! Треугольник не существует"};
+    function getArea () {return getPerimeter()};
+    let errorTri = {getPerimeter, getArea};
 
-         getArea() {
-             return this.getPerimeter();
-         }
-     }
-   
     function getTriangle(a, b, c) {
      try {
          return new Triangle(a, b, c);
      } catch (error) {
-        return new ErrorTriangle;
+        return errorTri;
      }
     }
