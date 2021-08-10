@@ -1,3 +1,4 @@
+
 class AlarmClock {
   constructor() {
 this.alarmCollection = [];
@@ -5,16 +6,17 @@ this.timerId = null;
 }
 
 addClock(timeCall, callback, id) {
- if (id === null) {
-   throw new Error("Будильник с таким id не обнаружен")
+ if (id === undefined) {
+   throw new Error("Параметр id для будильника не передан");
  } 
 
- let findIdCall = this.alarmCollection.findIndex((item) => item.id === id)
+ const findIdCall = this.alarmCollection.findIndex((item) => item.id === id);
  if(findIdCall > -1) {
-  console.error("Будильник с таким id уже существует!")
- } else {
- this.alarmCollection.push({'id': id, 'time': timeCall, 'callback': callback});
-}
+  console.error("Будильник с таким id уже существует!");
+ }
+ else if(findIdCall === -1) {
+   this.alarmCollection.push({'id': id, 'time': timeCall, 'callback': callback});
+ }
 }
 
 removeClock(id) {
@@ -38,7 +40,7 @@ getCurrentFormattedTime() {
  if(nowMinutes < 10) {
    nowMinutes = '0' + nowMinutes;
  }
- return `{nowHours}:{nowMinutes}`
+ return `${nowHours}:${nowMinutes}`
 }
 
 checkClock(alarm) {
@@ -66,7 +68,7 @@ stop() {
 
 printAlarms(){
   console.log('Печать всех будильников в количестве: ' + this.alarmCollection.length);
-  this.alarmCollection.forEach((item) => {console.log('Будильник №' + item.id + 'заведён на ' + item.time);})
+  this.alarmCollection.forEach((item) => {console.log('Будильник №' + item.id + ' заведён на ' + item.time);})
 };
 
 clearAlarms() {

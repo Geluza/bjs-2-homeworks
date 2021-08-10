@@ -8,6 +8,6 @@ phoneAlarm.addClock('09:02', () => {
   phoneAlarm.clearAlarms();
   phoneAlarm.printAlarms();
 }, 3);
-phoneAlarm.addClock('09;05', () => console.log('Вставай, а то проспишь!'), 1);
+phoneAlarm.addClock('09:05', () => console.log('Вставай, а то проспишь!'), 1);
 phoneAlarm.printAlarms();
 phoneAlarm.start();
